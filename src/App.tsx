@@ -27,6 +27,7 @@ import {
   findFirstUnusedReveal,
   unicodeLength,
   solutionIndex as solutionIndexOfDay,
+  clue as clueOfDay,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -52,11 +53,14 @@ import { useMatch } from 'react-router-dom'
 import { getWordBySolutionIndex } from './lib/words'
 import { exampleIds } from './constants/exampleIds'
 
+import { ClueText } from './components/gametext/ClueText'
+
 function App() {
   const isPlayingDaily = useMatch('/') !== null
   const exampleMatch = useMatch('/examples/:id')
   const isPlayingExample = exampleMatch !== null
   let exampleSolution = undefined
+  let exampleClue = undefined
   let exampleSolutionIndex = undefined
   let isReturningExampleNotFoundPage = false
   if (exampleMatch) {
@@ -67,11 +71,13 @@ function App() {
     if (!Number.isNaN(id) && id >= 0) {
       const exampleSolutionAndIndex = getWordBySolutionIndex(id)
       exampleSolution = exampleSolutionAndIndex.solution
+      exampleClue = exampleSolutionAndIndex.clue
       exampleSolutionIndex = exampleSolutionAndIndex.solutionIndex
     }
   }
   const solution =
     exampleSolution !== undefined ? exampleSolution : solutionOfDay
+  const clue = exampleClue !== undefined ? exampleClue : clueOfDay
   const solutionIndex =
     exampleSolutionIndex !== undefined
       ? exampleSolutionIndex
@@ -253,7 +259,7 @@ function App() {
       })
     }
 
-    if (!isWordInWordList(currentGuess)) {
+    if (!isWordInWordList(currentGuess, solution)) {
       setCurrentRowClass('jiggle')
       return showErrorAlert(WORD_NOT_FOUND_MESSAGE, {
         onClose: clearCurrentRowClass,
@@ -373,6 +379,7 @@ function App() {
       />
       <div className="pt-2 px-1 pb-8 md:max-w-7xl w-full mx-auto sm:px-6 lg:px-8 flex flex-col grow">
         <div className="pb-6 grow">
+          <ClueText clue={clue} />
           <Grid
             solution={solution}
             guesses={guesses}

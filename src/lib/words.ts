@@ -1,21 +1,16 @@
 import { WORDS } from '../constants/wordlist'
-import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
-// import { isValidKey } from '../components/keyboard/Keyboard'
+import { isValidKey } from '../components/keyboard/Keyboard'
 
-export const isWordInWordList = (word: string) => {
-  return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
-    VALID_GUESSES.includes(localeAwareLowerCase(word))
-  )
+const getWords = (wordlist: { solution: string }[]) => {
+  return wordlist.map(wordObj => wordObj.solution)
 }
 
-/*
-export const isWordInWordList = (word: string) => {
+export const isWordInWordList = (word: string, solution: string) => {
   return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
+    getWords(WORDS).includes(word) ||
     isValidWord(word, solution)
   )
 }
@@ -23,7 +18,6 @@ export const isWordInWordList = (word: string) => {
 export const isValidWord = (word: string, solution: string) => {
   return word.length === solution.length && word.split('').every(isValidKey);
 }
-*/
 
 export const isWinningWord = (word: string, solution: string) => {
   return word === solution
@@ -94,7 +88,8 @@ export const localeAwareUpperCase = (text: string) => {
 
 export const getWordBySolutionIndex = (solutionIndex: number) => {
   return {
-    solution: localeAwareUpperCase(WORDS[solutionIndex]),
+    solution: localeAwareUpperCase(WORDS[solutionIndex].solution),
+    clue: WORDS[solutionIndex].clue,
     solutionIndex: solutionIndex,
   }
 }
@@ -118,9 +113,10 @@ export const getWordOfDay = () => {
 
   return {
     solution: solutionAndIndex.solution,
+    clue: solutionAndIndex.clue,
     solutionIndex: solutionAndIndex.solutionIndex,
     tomorrow: nextDay.valueOf(),
   }
 }
 
-export const { solution, solutionIndex, tomorrow } = getWordOfDay()
+export const { solution, clue, solutionIndex, tomorrow } = getWordOfDay()

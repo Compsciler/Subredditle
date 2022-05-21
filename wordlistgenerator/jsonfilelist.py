@@ -26,3 +26,5 @@ def merge_lists_without_duplicates(*args):
                 merged_list.append(elem)
                 seen.add(elem)
     return merged_list
+
+newline_delimited_to_json_file('constants/ListOfSubreddits_Alphabetical.txt', 'constants/subreddits.json')

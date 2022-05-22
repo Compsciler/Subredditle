@@ -8,60 +8,107 @@ type Props = {
 
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
-    <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose} isWide={true}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Guess the word in 6 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the word.
+        Guess the subreddit name in 8 tries. After each guess, the color of the tiles will
+        change to show how close your guess was to the subreddit. 
+      </p>
+      <p className="text-sm text-gray-500 dark:text-gray-300">
+        You may input any sequence of characters for each guess.
+      </p>
+      <br />
+      <p className="text-sm text-gray-500 dark:text-gray-300">
+        You will be given the description of the subreddit from Reddit as a clue.
+        The solution will be one of the <strong>106 top-subscribed subreddits</strong>,
+        each of which has over 4 million members (and is SFW).
+        That means the subreddit name will <strong>not</strong> be as random as the examples below. 
+        (Also note that the vast majority of subreddit names on this list contain no numbers or underscores.)
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="W"
+          value="T"
           status="correct"
         />
-        <Cell value="E" />
-        <Cell value="A" />
         <Cell value="R" />
-        <Cell value="Y" />
+        <Cell value="E" />
+        <Cell value="B" />
+        <Cell value="U" />
+        <Cell value="C" />
+        <Cell value="H" />
+        <Cell value="E" />
+        <Cell value="T" />
+        <Cell value="M" />
+        <Cell value="E" />
+        <Cell value="M" />
+        <Cell value="E" />
+        <Cell value="S" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter W is in the word and in the correct spot.
+        The first letter T is in the subreddit and in the correct spot.
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
-        <Cell value="P" />
-        <Cell value="I" />
+        <Cell value="B" />
+        <Cell value="R" />
+        <Cell value="E" />
+        <Cell value="A" />
+        <Cell value="D" />
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="L"
+          value="S"
           status="present"
         />
+        <Cell value="T" />
+        <Cell value="A" />
+        <Cell value="P" />
+        <Cell value="L" />
+        <Cell value="E" />
+        <Cell value="D" />
+        <Cell value="T" />
         <Cell value="O" />
         <Cell value="T" />
+        <Cell value="R" />
+        <Cell value="E" />
+        <Cell value="E" />
+        <Cell value="S" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter L is in the word but in the wrong spot.
+        The first letter S is in the subreddit but in the wrong spot.
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
-        <Cell value="V" />
-        <Cell value="A" />
-        <Cell value="G" />
-        <Cell isRevealing={true} isCompleted={true} value="U" status="absent" />
+        <Cell value="F" />
+        <Cell value="I" />
+        <Cell value="F" />
+        <Cell value="T" />
+        <Cell value="H" />
+        <Cell value="W" />
+        <Cell value="O" />
+        <Cell value="R" />
+        <Cell value="L" />
+        <Cell value="D" />
+        <Cell isRevealing={true} isCompleted={true} value="P" status="absent" />
+        <Cell value="R" />
+        <Cell value="O" />
+        <Cell value="B" />
+        <Cell value="L" />
         <Cell value="E" />
+        <Cell value="M" />
+        <Cell value="S" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter U is not in the word in any spot.
+        The letter P is not in the word in any spot.
       </p>
 
       <p className="mt-6 italic text-sm text-gray-500 dark:text-gray-300">
         This is an open source version of the word guessing game we all know and
         love -{' '}
         <a
-          href="https://github.com/Compsciler/Wordle-With-Score-Database/"
+          href="https://github.com/Compsciler/Subredditle"
           className="underline font-bold"
         >
           check out the code here

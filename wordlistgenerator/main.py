@@ -3,13 +3,13 @@ from collections import Counter
 from jsonfilelist import json_file_to_list, list_to_json_file
 
 random.seed(0)
+random.seed(random.randrange(10**5))
 
-old_word_list_json_file = 'constants/subreddits.json'
+old_word_list_json_file = 'constants/oldwordlist.json'
 new_word_list_file = 'constants/wordlist.json'
 
 def get_word_list(old_word_list):
-    new_word_list = [s.lower() for s in old_word_list]
-    return new_word_list
+    return old_word_list
 
 old_word_list = json_file_to_list(old_word_list_json_file)
 new_word_list = get_word_list(old_word_list)

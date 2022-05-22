@@ -54,6 +54,7 @@ import { getWordBySolutionIndex } from './lib/words'
 import { exampleIds } from './constants/exampleIds'
 
 import { ClueText } from './components/gametext/ClueText'
+import { SolutionText } from './components/gametext/SolutionText'
 
 function App() {
   const isPlayingDaily = useMatch('/') !== null
@@ -68,11 +69,14 @@ function App() {
     if (!exampleIds.includes(id)) {
       isReturningExampleNotFoundPage = true
     }
-    if (!Number.isNaN(id) && id >= 0) {
+    if (!Number.isNaN(id)) {
       const exampleSolutionAndIndex = getWordBySolutionIndex(id)
       exampleSolution = exampleSolutionAndIndex.solution
       exampleClue = exampleSolutionAndIndex.clue
       exampleSolutionIndex = exampleSolutionAndIndex.solutionIndex
+      if (exampleSolutionIndex === -1) {
+        isReturningExampleNotFoundPage = true
+      }
     }
   }
   const solution =
@@ -94,6 +98,7 @@ function App() {
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
+  const [isSolutionTextOpen, setIsSolutionTextOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(
@@ -128,12 +133,14 @@ function App() {
     const gameWasWon = loaded.guesses.includes(solution)
     if (gameWasWon) {
       setIsGameWon(true)
+      setIsSolutionTextOpen(true)
     }
     if (loaded.guesses.length === MAX_CHALLENGES && !gameWasWon) {
       setIsGameLost(true)
       showErrorAlert(CORRECT_WORD_MESSAGE(solution), {
         persist: true,
       })
+      setIsSolutionTextOpen(true)
     }
     return loaded.guesses
   })
@@ -213,10 +220,10 @@ function App() {
   }, [guessesOfDay])
 
   useEffect(() => {
+    const delayMs = REVEAL_TIME_MS * solution.length
     if (isGameWon) {
       const winMessage =
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      const delayMs = REVEAL_TIME_MS * solution.length
 
       showSuccessAlert(winMessage, {
         delayMs,
@@ -228,6 +235,12 @@ function App() {
       setTimeout(() => {
         setIsStatsModalOpen(true)
       }, (solution.length + 1) * REVEAL_TIME_MS)
+    }
+
+    if (isGameWon || isGameLost) {
+      setTimeout(() => {
+        setIsSolutionTextOpen(true)
+      }, delayMs)
     }
   }, [isGameWon, isGameLost, showSuccessAlert])
 
@@ -386,6 +399,10 @@ function App() {
             currentGuess={currentGuess}
             isRevealing={isRevealing}
             currentRowClassName={currentRowClass}
+          />
+          <SolutionText
+            solution={solution}
+            isGameComplete={isSolutionTextOpen}
           />
         </div>
         <Keyboard

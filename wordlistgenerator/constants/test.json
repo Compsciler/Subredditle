@@ -1,4 +1,4 @@
-export const exampleIds = [
+[
   0,
   1,
   2,
@@ -104,5 +104,5 @@ export const exampleIds = [
   102,
   103,
   104,
-  105,
+  105
 ]

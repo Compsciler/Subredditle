@@ -1,7 +1,7 @@
 export const WORDS = [
   {
     "solution": "mademesmile",
-    "clue": "A place to share things that made you [...] or brightened up your day."
+    "clue": "A place to share things that [...] or brightened up your day."
   },
   {
     "solution": "oddlysatisfying",

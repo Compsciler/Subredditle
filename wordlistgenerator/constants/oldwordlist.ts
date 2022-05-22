@@ -73,7 +73,7 @@ export const WORDS = [
   {solution: 'buildapc', clue: 'r/[subreddit name] is a community-driven subreddit dedicated to custom [subreddit topic] assembly.'},
   {solution: 'dankmemes', clue: 'I have achieved comedy'},
   {solution: 'blackpeopletwitter', clue: 'Screenshots of [...] being hilarious or insightful on social media, it doesn\'t need to just be [...] but obviously that is best.'},
-  {solution: 'mademesmile', clue: 'A place to share things that made you [...] or brightened up your day.'},
+  {solution: 'mademesmile', clue: 'A place to share things that [...] or brightened up your day.'},
   {solution: 'place', clue: 'There is an empty canvas. You may place a tile upon it, but you must wait to place another. Individually you can create something. Together you can create something more.'},
   {solution: 'ps4', clue: 'Your hub for everything related to [subreddit topic] including games, news, reviews, discussion, questions, videos, and screenshots.'},
   {solution: 'bestof', clue: 'The [...] comments on reddit as submitted by the users of reddit.'},

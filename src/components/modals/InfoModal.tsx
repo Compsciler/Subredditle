@@ -102,7 +102,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="S" />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter P is not in the word in any spot.
+        The letter P is not in the subreddit in any spot.
       </p>
 
       <p className="mt-6 italic text-sm text-gray-500 dark:text-gray-300">

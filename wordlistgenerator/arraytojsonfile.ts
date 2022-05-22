@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import { WORDS } from './constants/oldwordlist'
-import { VALID_GUESSES } from './constants/oldvalidGuesses'
+// import { VALID_GUESSES } from './constants/oldvalidGuesses'
 
-const arrayToJsonFile = (arr: string[], writeFilePath: string) => {
+const arrayToJsonFile = (arr: object[], writeFilePath: string) => {
     const data = JSON.stringify(arr)
     fs.writeFile(writeFilePath, data, (err) => {
         if (err) throw err;
@@ -10,4 +10,4 @@ const arrayToJsonFile = (arr: string[], writeFilePath: string) => {
 }
 
 arrayToJsonFile(WORDS, 'constants/oldwordlist.json')
-arrayToJsonFile(VALID_GUESSES, 'constants/oldvalidGuesses.json')
+// arrayToJsonFile(VALID_GUESSES, 'constants/oldvalidGuesses.json')

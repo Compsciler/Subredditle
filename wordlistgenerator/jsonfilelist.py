@@ -26,6 +26,3 @@ def merge_lists_without_duplicates(*args):
                 merged_list.append(elem)
                 seen.add(elem)
     return merged_list
-
-x = [i for i in range(106)]
-list_to_json_file(x, 'constants/test.json')

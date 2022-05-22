@@ -15,6 +15,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         You may input any sequence of characters for each guess.
+        Playing on PC is recommended.
       </p>
       <br />
       <p className="text-sm text-gray-500 dark:text-gray-300">

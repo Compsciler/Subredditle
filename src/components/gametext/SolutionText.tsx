@@ -21,6 +21,7 @@ const classes = "flex justify-center mt-4 dark:text-white"
 const a_classes = "underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
 
 export const SolutionText = ({ solution, isGameComplete }: Props) => {
+  solution = solution.toLocaleLowerCase()
   const subredditLink = `https://www.reddit.com/r/${solution}/`
   return (
     <Transition.Root show={isGameComplete} style={styles} className={classes}>

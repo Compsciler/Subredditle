@@ -422,5 +422,5 @@ export const WORDS = [
   {
     "solution": "internetisbeautiful",
     "clue": "This is a subreddit based around sharing awesome, usually minimal and single-purpose websites and webtools."
-  }
+  },
 ]

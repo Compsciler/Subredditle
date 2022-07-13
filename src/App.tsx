@@ -28,6 +28,7 @@ import {
   unicodeLength,
   solutionIndex as solutionIndexOfDay,
   clue as clueOfDay,
+  getBonusWordBySolutionIndex,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -59,7 +60,10 @@ import { SolutionText } from './components/gametext/SolutionText'
 function App() {
   const isPlayingDaily = useMatch('/') !== null
   const exampleMatch = useMatch('/examples/:id')
+  const bonusMatch = useMatch('/bonus/:id')
   const isPlayingExample = exampleMatch !== null
+  const isPlayingBonus = bonusMatch !== null
+  const isPlayingExampleOrBonus = isPlayingExample || isPlayingBonus
   let exampleSolution = undefined
   let exampleClue = undefined
   let exampleSolutionIndex = undefined
@@ -71,6 +75,20 @@ function App() {
     }
     if (!Number.isNaN(id)) {
       const exampleSolutionAndIndex = getWordBySolutionIndex(id)
+      exampleSolution = exampleSolutionAndIndex.solution
+      exampleClue = exampleSolutionAndIndex.clue
+      exampleSolutionIndex = exampleSolutionAndIndex.solutionIndex
+      if (exampleSolutionIndex === -1) {
+        isReturningExampleNotFoundPage = true
+      }
+    }
+  } else if (bonusMatch) {
+    const id = parseInt(bonusMatch.params.id!)
+    if (!exampleIds.includes(id)) {
+      isReturningExampleNotFoundPage = true
+    }
+    if (!Number.isNaN(id)) {
+      const exampleSolutionAndIndex = getBonusWordBySolutionIndex(id)
       exampleSolution = exampleSolutionAndIndex.solution
       exampleClue = exampleSolutionAndIndex.clue
       exampleSolutionIndex = exampleSolutionAndIndex.solutionIndex
@@ -311,7 +329,7 @@ function App() {
       setIsRevealing(false)
     }, REVEAL_TIME_MS * solution.length)
 
-    const winningWord = isPlayingExample
+    const winningWord = isPlayingExampleOrBonus
       ? isWinningWord(currentGuess, solution)
       : isWinningWordOfDay(currentGuess)
 
@@ -329,7 +347,7 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
-        if (!isPlayingExample) {
+        if (!isPlayingExampleOrBonus) {
           setStats(addStatsForCompletedGame(stats, guesses.length))
         }
         sendScore(
@@ -343,7 +361,7 @@ function App() {
       }
 
       if (guesses.length === MAX_CHALLENGES - 1) {
-        if (!isPlayingExample) {
+        if (!isPlayingExampleOrBonus) {
           setStats(addStatsForCompletedGame(stats, guesses.length + 1))
         }
         sendScore(
@@ -445,7 +463,7 @@ function App() {
           isDarkMode={isDarkMode}
           isHighContrastMode={isHighContrastMode}
           numberOfGuessesMade={guesses.length}
-          isPlayingExample={isPlayingExample}
+          isPlayingExample={isPlayingExampleOrBonus}
           isManualShareText={isManualShareText}
         />
         <SettingsModal

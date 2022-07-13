@@ -1,4 +1,5 @@
 import { WORDS } from '../constants/wordlist'
+import { BONUS_WORDS } from '../constants/bonuswordlist'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
@@ -98,6 +99,22 @@ export const getWordBySolutionIndex = (solutionIndex: number) => {
     solution: localeAwareUpperCase(WORDS[solutionIndex].solution),
     clue: WORDS[solutionIndex].clue,
     solutionIndex: solutionIndex,
+  }
+}
+
+const BONUS_WORD_SOLUTION_INDEX_OFFSET = 1000
+export const getBonusWordBySolutionIndex = (solutionIndex: number) => {
+  if (solutionIndex < 0 || solutionIndex >= BONUS_WORDS.length) {
+    return {
+      solution: '',
+      clue: '',
+      solutionIndex: -1
+    }
+  }
+  return {
+    solution: localeAwareUpperCase(BONUS_WORDS[solutionIndex].solution),
+    clue: BONUS_WORDS[solutionIndex].clue,
+    solutionIndex: solutionIndex + BONUS_WORD_SOLUTION_INDEX_OFFSET,
   }
 }
 

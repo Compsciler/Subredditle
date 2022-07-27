@@ -1,6 +1,6 @@
 # Subredditle
 
-Guess the subreddit name in 8 tries. After each guess, the color of the tiles will
+Guess the subreddit name in 10 tries. After each guess, the color of the tiles will
 change to show how close your guess was to the subreddit. 
 
 You may input any sequence of characters for each guess.

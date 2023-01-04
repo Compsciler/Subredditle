@@ -12,7 +12,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
     <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose} isWide={true}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         Guess the subreddit name in 10 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the subreddit. 
+        change to show how close your guess was to the subreddit.
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         You may input any sequence of characters for each guess.
@@ -23,7 +23,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         You will be given the description of the subreddit from Reddit as a clue.
         The solution will be one of the <strong>106 top-subscribed subreddits</strong>,
         each of which has over 4 million members (and is SFW).
-        That means the subreddit name will <strong>not</strong> be as random as the examples below. 
+        That means the subreddit name will <strong>not</strong> be as random as the examples below.
         (Also note that the vast majority of subreddit names on this list contain no numbers or underscores.)
       </p>
 

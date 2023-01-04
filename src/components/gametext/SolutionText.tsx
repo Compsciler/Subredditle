@@ -17,7 +17,7 @@ const hrStyles = {
   margin: 0,
 }
 
-const classes = "flex justify-center mt-4 dark:text-white"
+const classes = "flex justify-center dark:text-white"
 const a_classes = "underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
 
 export const SolutionText = ({ solution, isGameComplete }: Props) => {

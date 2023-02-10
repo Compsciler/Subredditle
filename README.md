@@ -12,7 +12,7 @@ each of which has over 4 million members (and is SFW).
 That means the subreddit name will <strong>not</strong> be as random as the examples below. (Examples will be posted later.) 
 (Also note that the vast majority of subreddit names on this list contain no numbers or underscores.)
 
-[**Play the daily game here!**](https://subredditle.herokuapp.com/)
+[**Play the daily game here!**](https://subredditle.netlify.app)
 
 You can play every Subredditle puzzle (past and future) by visiting the URL 
 <a href="https://subredditle.herokuapp.com/examples/0" target="_blank">subredditle.herokuapp.com/examples/0</a> 

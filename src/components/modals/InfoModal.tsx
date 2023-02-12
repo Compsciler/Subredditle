@@ -108,12 +108,12 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
 
       <p className="mt-6 text-sm text-gray-500 dark:text-gray-300">
         You can play every Subredditle puzzle (past and future) by visiting the URL {' '}
-        <a href="https://subredditle.herokuapp.com/examples/0" target="_blank" className={a_classes}>subredditle.herokuapp.com/examples/0</a> {' '}
+        <a href="https://subredditle.netlify.app/examples/0" target="_blank" className={a_classes}>subredditle.netlify.app/examples/0</a> {' '}
         and replacing the 0 at the end with a number between 0 and 105 inclusive.
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         Secret bonus extra puzzles: {' '}
-        <a href="https://subredditle.herokuapp.com/bonus/0" target="_blank" className={a_classes}>subredditle.herokuapp.com/bonus/0</a> {' '}
+        <a href="https://subredditle.netlify.app/bonus/0" target="_blank" className={a_classes}>subredditle.netlify.app/bonus/0</a> {' '}
         (replace 0 with a number between 0 and 7 inclusive)
       </p>
 

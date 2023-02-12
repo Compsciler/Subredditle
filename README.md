@@ -15,7 +15,7 @@ That means the subreddit name will <strong>not</strong> be as random as the exam
 [**Play the daily game here!**](https://subredditle.netlify.app)
 
 You can play every Subredditle puzzle (past and future) by visiting the URL 
-<a href="https://subredditle.herokuapp.com/examples/0" target="_blank">subredditle.herokuapp.com/examples/0</a> 
+<a href="https://subredditle.netlify.app/examples/0" target="_blank">subredditle.netlify.app/examples/0</a> 
 and replacing the 0 at the end with a number between 0 and 105 inclusive.
 
 This is one of the Wordle variants I have made. The other games and instructions for creating your own Wordle variant can be found [here](https://github.com/Compsciler/Wordle-With-Score-Database/).
